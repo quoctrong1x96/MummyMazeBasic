@@ -20,7 +20,7 @@ namespace MummyMazeBasic
             base.LoadContent();
             path = "menufront";
             image = content.Load<Texture2D>(path);
-            path = "Font";
+            path = "ButtonFont";
             font = content.Load<SpriteFont>(path);
             position = new Vector2(155, -600);
             desRect = new Rectangle((int)position.X, (int)position.Y, 400, 400);
@@ -47,9 +47,12 @@ namespace MummyMazeBasic
                 desRect = new Rectangle((int)position.X, (int)position.Y, 480, 400);
                 elapsed = 0;
             }
-            if (position.Y >= 0)
+            else
             {
-
+                if (position.Y >= 0)
+                {
+                    GameMapManager.Instance.isWriteText = true;
+                }
             }
         }
 

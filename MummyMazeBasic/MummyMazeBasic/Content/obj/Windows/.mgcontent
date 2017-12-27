@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/_explorer8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/_gameovertext.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/_redmummy8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/backdrop.jpg</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/buttonstrip.jpg</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/circle8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/dust8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/editbox.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/explorer8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/flame.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/floordark8.jpg</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/headerfont.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/menuback.jpg</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/menufront.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/mummy8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/pointer.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/redfight8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/redmummy8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/scorpion8.gif</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/stairs8.gif</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/trap6.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/walls8.gif</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/whitefight8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/_dust8.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/ButtonFont.spritefont</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/floor8.jpg</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/MummyMazeBasic/MummyMazeBasic/Content/LevelFont.spritefont</File>
+  </SourceFiles>
+</SourceFileCollection>

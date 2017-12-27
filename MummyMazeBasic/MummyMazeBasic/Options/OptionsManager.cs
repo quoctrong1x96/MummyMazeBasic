@@ -20,6 +20,7 @@ namespace MummyMazeBasic
         Options backOptios;
         Options gameOptions;
         Options mouse;
+        Options buttonOKCANCEL;
 
         public ContentManager Content { get; set; }
 
@@ -41,6 +42,7 @@ namespace MummyMazeBasic
             backOptios = new BackOptions();
             gameOptions = new GameOptions();
             mouse = new MousePointer();
+            buttonOKCANCEL = new ButtonOKCANCEL();
         }
 
         public void LoadContent(ContentManager Content)
@@ -50,6 +52,7 @@ namespace MummyMazeBasic
             backOptios.LoadContent();
             gameOptions.LoadContent();
             mouse.LoadContent();
+            buttonOKCANCEL.LoadContent();
         }
 
         public void UploadConten()
@@ -58,6 +61,7 @@ namespace MummyMazeBasic
             backOptios.UploadConten();
             gameOptions.UploadConten();
             mouse.UploadConten();
+            buttonOKCANCEL.UploadConten();
         }
 
         public void Update(GameTime gameTime)
@@ -66,6 +70,7 @@ namespace MummyMazeBasic
             backOptios.Update(gameTime);
             gameOptions.Update(gameTime);
             mouse.Update(gameTime);
+            buttonOKCANCEL.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
@@ -75,10 +80,11 @@ namespace MummyMazeBasic
                 backOptios.Draw(spriteBatch);
                 gameover.Draw(spriteBatch);
             }
-            if (GameMapManager.Instance.isGameOptions)
+            if (!GameMapManager.Instance.isButtonOption)
             {
                 backOptios.Draw(spriteBatch);
                 gameOptions.Draw(spriteBatch);
+                buttonOKCANCEL.Draw(spriteBatch);
             }
             mouse.Draw(spriteBatch);
         }

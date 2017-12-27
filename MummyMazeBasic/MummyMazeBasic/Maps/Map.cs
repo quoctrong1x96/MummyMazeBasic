@@ -45,6 +45,7 @@ namespace MummyMazeBasic
         {
             if (GameMapManager.Instance.isNewMap)
             {
+                GameMapManager.Instance.mapSize = GameMapManager.Instance.mapsizeTemp;
                 maze = new int[2 * GameMapManager.Instance.mapSize + 2][];
                 GameMapManager.Instance.isNewMap = false;
                 SetMap();

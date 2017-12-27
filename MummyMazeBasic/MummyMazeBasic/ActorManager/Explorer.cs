@@ -26,7 +26,7 @@ namespace MummyMazeBasic
             base.LoadContent();
             //moveSize = Extentions.CheckRoad.moveSize();
             position = new Vector2(213 + (GameMapManager.Instance.localActor[0].j - 1) * (4 * moveSize),
-                                              79 + (GameMapManager.Instance.localActor[0].i - 1) * (4 * moveSize));
+                                        79 + (GameMapManager.Instance.localActor[0].i - 1) * (4 * moveSize));
             desRect = new Rectangle((int)position.X,
                                     (int)position.Y,
                                     180 / GameMapManager.Instance.mapSize,
@@ -76,6 +76,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 0);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -105,6 +107,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 0);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -133,6 +137,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 0);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -162,6 +168,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 0);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -188,6 +196,7 @@ namespace MummyMazeBasic
                         disableKey = false;
                         isStand = false;
                         keyState = default(KeyboardState);
+                        Extentions.CheckRoad.MummyEatExplorer();
                     }
                     else
                     {
@@ -199,11 +208,12 @@ namespace MummyMazeBasic
             }
 
             moveSize = Extentions.CheckRoad.moveSize();
-            if (GameMapManager.Instance.isNewMummy)
+           
+            if (GameMapManager.Instance.isNewActor || GameMapManager.Instance.isNewMap)
             {
-                position = new Vector2(213 + (GameMapManager.Instance.localActor[2].j) * (4 * moveSize),
-                                        79 + (GameMapManager.Instance.localActor[2].i) * (4 * moveSize));
-                GameMapManager.Instance.isNewMummy = false;
+                position = new Vector2(213 + (GameMapManager.Instance.localActor[0].j - 1) * (4 * moveSize),
+                                        79 + (GameMapManager.Instance.localActor[0].i - 1) * (4 * moveSize));
+                GameMapManager.Instance.isNewActor = false;
             }
             desRect = new Rectangle((int)position.X, (int)position.Y, 180 / GameMapManager.Instance.mapSize,
                                     180 / (GameMapManager.Instance.mapSize + 1));

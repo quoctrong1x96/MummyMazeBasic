@@ -74,7 +74,6 @@ namespace MummyMazeBasic
                         // option
                         if (GameMapManager.Instance.isButtonOption)
                         {
-                            GameMapManager.Instance.isGameOver = false;
                             GameMapManager.Instance.isGameOptionsScroll = true;
                             GameMapManager.Instance.isOptions = true;
                             GameMapManager.Instance.isButtonOption = false;

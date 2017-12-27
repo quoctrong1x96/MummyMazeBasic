@@ -28,11 +28,13 @@ namespace MummyMazeBasic
         public bool isNewMummyIn { get; set; }
         public int[][] map { get; set; }
         public List<Extentions.CLocal> localActor;
-        public bool isGameOver;
-        public bool isOptions;
-        public bool isGameOptions;
-        public bool isGameOptionsScroll;
-        public bool isButtonOption;
+        public bool isGameOver { get; set; }
+        public bool isOptions { get; set; }
+        public bool isGameOptions { get; set; }
+        public bool isGameOptionsScroll { get; set; }
+        public bool isButtonOption { get; set; }
+        public bool isWriteText { get; set; }
+        public int mapsizeTemp { get; set; }
         public ContentManager Content { get; set; }
 
         public static GameMapManager Instance
@@ -52,6 +54,7 @@ namespace MummyMazeBasic
             random = new Random();
             level = 1;
             mapSize = 3;
+            mapsizeTemp = 3;
             isNewMap = true;
             map = new int[mapSize * 2 + 1][];
             isNewActor = true;
@@ -62,8 +65,9 @@ namespace MummyMazeBasic
             isGameOver = false;
             isOptions = false;
             isGameOptions = true;
-            isGameOptionsScroll = true;
-            isButtonOption = true;
+            isGameOptionsScroll = false;
+            isButtonOption = false;
+            isWriteText = false;
         }
 
         public void LoadContent(ContentManager Content)

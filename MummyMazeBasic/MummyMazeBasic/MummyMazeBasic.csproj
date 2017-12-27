@@ -48,13 +48,14 @@
     <Compile Include="ActorManager\MymmyIntelligent.cs" />
     <Compile Include="Extentions\CheckRoad.cs" />
     <Compile Include="Extentions\CLocal.cs" />
-    <Compile Include="Game1.cs" />
+    <Compile Include="Main\Game1.cs" />
     <Compile Include="Main\GameMapManager.cs" />
     <Compile Include="Main\MainGame.cs" />
     <Compile Include="Maps\Map.cs" />
     <Compile Include="Maps\MapManager.cs" />
     <Compile Include="Maps\Walls.cs" />
     <Compile Include="Options\BackOptions.cs" />
+    <Compile Include="Options\ButtonOKCANCEL.cs" />
     <Compile Include="Options\GameOptions.cs" />
     <Compile Include="Options\GameOver.cs" />
     <Compile Include="Options\MousePointer.cs" />

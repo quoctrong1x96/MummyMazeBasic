@@ -44,41 +44,39 @@ namespace MummyMazeBasic
         /// </summary>
         public ActorManager()
         {
-            //Stupid Mummy
-            mummyStupid = new Mummy();
             explorer = new Explorer();
+            mummyStupid = new Mummy();
             mummyIntelligent = new MummyIntelligent();
-            // Explorer human
 
         }
 
         public void LoadContent(ContentManager Content)
         {
             this.Content = new ContentManager(Content.ServiceProvider, "Content");
-            mummyStupid.LoadContent();
             explorer.LoadContent();
             mummyIntelligent.LoadContent();
+            mummyStupid.LoadContent();
         }
 
         public void UploadConten()
         {
-            mummyStupid.UploadConten();
             explorer.UploadConten();
             mummyIntelligent.UploadConten();
+            mummyStupid.UploadConten();
         }
 
         public void Update(GameTime gameTime)
         {
-            mummyStupid.Update(gameTime);
             explorer.Update(gameTime);
             mummyIntelligent.Update(gameTime);
+            mummyStupid.Update(gameTime);
         }
 
         public void Draw(SpriteBatch spriteBatch)
         {
-            mummyStupid.Draw(spriteBatch);
             explorer.Draw(spriteBatch);
             mummyIntelligent.Draw(spriteBatch);
+            mummyStupid.Draw(spriteBatch);
         }
     }
 }

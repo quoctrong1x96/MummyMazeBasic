@@ -33,9 +33,6 @@ namespace MummyMazeBasic.Extentions
                     && Mouse.GetState().Y >= 430 && Mouse.GetState().Y <= 472)
             {
                 return 5;
-#pragma warning disable CS0162 // Unreachable code detected
-                MainGame.self.Exit();
-#pragma warning restore CS0162 // Unreachable code detected
             }
             if (Mouse.GetState().X >= 7 && Mouse.GetState().X <= 142
                 && Mouse.GetState().Y >= 130 && Mouse.GetState().Y <= 172)
@@ -79,6 +76,36 @@ namespace MummyMazeBasic.Extentions
             return local;
         }
 
+        public static CLocal Address(Vector2 position)
+        {
+            CLocal address = new CLocal();
+            address.i = (int)(1 + Math.Abs(((position.X - (float)213) / (180 / GameMapManager.Instance.mapSize)) %
+                (2 * GameMapManager.Instance.mapSize + 1)));
+            address.j = (int)(1 + Math.Abs(((position.Y - (float)79) / (180 / GameMapManager.Instance.mapSize)) %
+                (2 * GameMapManager.Instance.mapSize + 1)));
+            return address;
+        }
+
+        public static void UpdatePosition(CLocal address, int index)
+        {
+            GameMapManager.Instance.localActor[index].i = address.i;
+            GameMapManager.Instance.localActor[index].j = address.j;
+        }
+        public static bool MummyEatExplorer()
+        {
+            CLocal addressMummy = GameMapManager.Instance.localActor[1];
+            CLocal addressMummyIntelligent = GameMapManager.Instance.localActor[2];
+            CLocal addressExplorer = GameMapManager.Instance.localActor[0];
+                if ((addressMummy.i == addressExplorer.i && addressMummy.j == addressExplorer.j)
+                || (addressMummyIntelligent.i == addressExplorer.i
+                && addressMummyIntelligent.j == addressExplorer.j))
+            {
+                GameMapManager.Instance.isGameOver = true;
+                GameMapManager.Instance.isOptions = true;
+                return true;
+            }
+            return false;
+        }
         public static bool CanGoTop(Vector2 position, int level)
         {
             int valueInArr = GameMapManager.Instance.map[limitMin((int)position.Y - 1, 0)][(int)position.X];

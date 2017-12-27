@@ -66,6 +66,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 2);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -95,6 +97,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 2);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -123,6 +127,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 2);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
@@ -152,6 +158,8 @@ namespace MummyMazeBasic
                             frame = 0;
                             disableKey = false;
                             keyState = default(KeyboardState);
+                            Extentions.CheckRoad.UpdatePosition(Extentions.CheckRoad.Address(position), 2);
+                            Extentions.CheckRoad.MummyEatExplorer();
                         }
                         else
                         {
