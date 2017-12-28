@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SourceFileCollection xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <Profile>Reach</Profile>
+  <Platform>Windows</Platform>
+  <Config />
+  <SourceFiles>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/faces1.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/faces2.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/faces3.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/faces4.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/faces5.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/faces6.png</File>
+    <File>C:/Users/TranCamTu/Documents/GitHub/MummyMazeBasic/Rectangular3D/Rectangular3D/Rectangular3D/Content/texture.jpg</File>
+  </SourceFiles>
+</SourceFileCollection>
