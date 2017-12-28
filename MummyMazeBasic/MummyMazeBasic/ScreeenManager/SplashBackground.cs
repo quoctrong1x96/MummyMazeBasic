@@ -5,13 +5,16 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 
 namespace MummyMazeBasic
 {
     public class SplashBackground: ScreenBackground
     {
+        private Song backgroundMusic;
         public override void LoadContent()
         {
             base.LoadContent();
@@ -21,6 +24,9 @@ namespace MummyMazeBasic
             desRect = new Rectangle((int)position.X, (int)position.Y, 360/GameMapManager.Instance.mapSize,
                                      360/ GameMapManager.Instance.mapSize);
             sourRect = new Rectangle(0, 0, 90, 90);
+            path = "BackgroundMusic";
+            backgroundMusic = content.Load<Song>(path);
+            MediaPlayer.Play(backgroundMusic);
         }
 
         public override void UploadConten()

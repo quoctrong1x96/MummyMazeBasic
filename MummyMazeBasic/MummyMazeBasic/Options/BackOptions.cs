@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Content;
+using Microsoft.Xna.Framework.Media;
 
 namespace MummyMazeBasic
 {
@@ -43,8 +44,8 @@ namespace MummyMazeBasic
             //{
                // position.Y += 7;
                 desRect = new Rectangle((int)position.X, (int)position.Y, 480, 480);
-                //elapsed = 0;
-           // }
+            //elapsed = 0;
+            // }
         }
 
         public override void Draw(SpriteBatch spriteBatch)

@@ -73,3 +73,7 @@ C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic
 C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\_redmummy8.xnb
 C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\floor8.xnb
 C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\LevelFont.xnb
+C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\BackgroundMusic.wma
+C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\BackgroundMusic.xnb
+C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\OverGame.wma
+C:\Users\TranCamTu\Documents\GitHub\MummyMazeBasic\MummyMazeBasic\MummyMazeBasic\bin\Windows\x86\Debug\Content\OverGame.xnb

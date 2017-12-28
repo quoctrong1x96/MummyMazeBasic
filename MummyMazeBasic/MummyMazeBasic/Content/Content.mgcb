@@ -327,3 +327,9 @@
 /processorParam:TextureFormat=Compressed
 /build:LevelFont.spritefont
 
+#begin BackgroundMusic.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:BackgroundMusic.mp3
+
