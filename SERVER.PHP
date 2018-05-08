@@ -1,123 +1,126 @@
 <?php
 
 namespace AppBundle\Controller;
-use AppBundle\Repository\KddsJSONRepository;
-use AppBundle\Entity\KddsTblBaby;
-use AppBundle\Entity\KddsTblBabyAttachment;
-use AppBundle\Entity\KddsTblBabyPlate;
-use AppBundle\Entity\KddsTblManuscript;
-use AppBundle\Entity\KddsTblBabyVersion;
-use AppBundle\Form\ManuscriptType;
-use AppBundle\Form\PlateType;
-use AppBundle\Form\BabyType;
-use AppBundle\Form\VersionType;
-use AppBundle\Form\AttachmentType;
+use AppBundle\Repository\KddsJSONRepository;                     // 20180504 FJN DAN-TD ADD
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Config\Definition\Exception\Exception;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\RedirectResponse;            // 20170904 FJN PHUC-PT KDDS-85
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException; // 20170904 FJN PHUC-PT KDDS-85
 
 /**
- * Class BabyController
+ * Class CommonController
  * @package AppBundle\Controller
- * @Route("/baby")
- * @Security("has_role('ROLE_GUEST') or has_role('ROLE_USER')")
+ * @Route("/common")
  */
-class BabyController extends Controller
+class CommonController extends Controller
 {
     /**
-     * @Route("/search", name="baby_search")
+     * @Route("/show_image", name="common_show_image")
+     * @Security("has_role('ROLE_GUEST') or has_role('ROLE_USER')")
+     * @Method({"GET"})
      */
-    public function babySearchAction(Request $request) {
-
+    public function showImageAction(Request $request){
+        // 20180504 FJN DAN-TD ADD START
+            $thumbnail   = 'false';
         try {
-            $jsonCondition = json_decode($request->request->get('jsonCondition'));
-            $isCollapse = 'true';
-            if ($request->request->get('isCollapse') !== null) {
-                $isCollapse = $request->request->get('isCollapse');
-            }
-            //
+            $parameters = $request->query->all();
+            $sort       = isset($parameters['sort'])?$parameters['sort']:null;
+
+            $session = $this->get('session');
+            $babyRecords = $session->get('babyRecords');
             $em = $this->getDoctrine()->getManager();
-            $formatter = $em->getRepository("AppBundle:KddsMstFormatter")->getDataView();
-            $composition = $em->getRepository("AppBundle:KddsMstComposition")->getDataView();
-            $expression = $em->getRepository("AppBundle:KddsMstExpression")->getDataView();
-            $printingProcess = $em->getRepository("AppBundle:KddsMstPrintingProcess")->getDataView();
-            $useIndustry = $em->getRepository("AppBundle:KddsMstUseIndustry")->getDataView();
-            $pattern = $em->getRepository("AppBundle:KddsMstPattern")->getDataView();
-            //
-            return $this->render('default/baby_search.html.twig', [
-                'jsonCondition' => $jsonCondition,
-                'formatterList' => $formatter,
-                'compositionList' => $composition,
-                'expressionList' => $expression,
-                'printingProcessList' => $printingProcess,
-                'useIndustryList' => $useIndustry,
-                'patternList' => $pattern,
-                'isCollapse' => $isCollapse,
+            if ($babyRecords !== null) {
+                $session->remove('babyRecords');
+            } else {
+                $parameters['isCollapse'] = 'false';
+                $parameters = KddsJSONRepository::convertDateInParameter($parameters);
+                $arrayData = KddsJSONRepository::convert_filter_array($parameters);
+                $parametersData = $arrayData['parametersData'];
+                $query = $em->getRepository("AppBundle:KddsTblBaby")
+                    ->getQueryBabyByRequest($parametersData, $this->getUser());
+                $thumbnail     = isset($parameters['thumbnail'])?$parameters['thumbnail']:'false';
+                if('true' != $thumbnail) {
+                    $thumbnail = 'false';
+                } else {
+                    $thumbnail = 'true';
+                };
+
+                $pagination  = $this->get('knp_paginator');
+                $babyRecords = $pagination->paginate(
+                    $query,
+                    1,
+                    999999
+                );
+            }
+            $image_url = $request->get('image_url');
+            return $this->render('default/common_show_image.html.twig', [
+                'image_url' => $image_url,
+                'babyRecordList'     => $babyRecords,
+                'sortOrder'       => $sort,
+                'itemPerPage'     => $itemPerPage,
+                'thumbnail'       => $thumbnail,
             ]);
         } catch(\Exception $e) {
             //エラー内容をログファイルに書き込む。
             $logger = $this->get('logger');
             $logger->critical($e->getMessage());
             //
-            return $this->render('default/baby_search.html.twig', [
+            return $this->render('default/common_show_image.html.twig', [
                 'exception' => $this->getParameter('exception_message'),
             ]);
         }
+        // 20180504 FJN DAN-TD DEL START
+
+        // 20180504 FJN DAN-TD ADD START
+        /*$image_url = $request->get('image_url');
+        return $this->render('default/common_show_image.html.twig', [
+            'image_url' => $image_url
+        ]);*/
+        // 20180504 FJN DAN-TD DEL START
     }
-
+    // 20180504 FJN DAN-TD ADD START
     /**
-     * @Route("/search_ajax", name="baby_search_ajax")
-     * @Method ("POST")
+     * @Route("/show_image", name="common_show_image")
+     * @Security("has_role('ROLE_GUEST') or has_role('ROLE_USER')")
+     * @Method({"POST"})
      */
-    public function babySearchAjaxAction(Request $request) {
-
+    public function showImageAjaxAction(Request $request){
+        // 20180504 FJN DAN-TD ADD START
         $response = new JsonResponse();
         try {
-            $parameters = $request->request->all();
-            //$parameters = array_filter($parameters);                                 // 20170915 FJN PHUC-PT KDDS-94 DEL
-            $parameters = array_filter($parameters, function ($v){return $v !== '';}); // 20170915 FJN PHUC-PT KDDS-94 ADD
-            $parameters = KddsJSONRepository::convertDateInParameter($parameters);
-            $arrayData  = KddsJSONRepository::convert_filter_array($parameters);
-            $parametersData = $arrayData['parametersData'];
-            $parametersLink = $arrayData['parametersLink'];
+            $parameters = $request->query->all();
+
+            $session = $this->get('session');
+            $babyRecords = $session->get('babyRecords');
             $em = $this->getDoctrine()->getManager();
-            $query = $em->getRepository("AppBundle:KddsTblBaby")
-                        ->getQueryBabyByRequest($parametersData, $this->getUser());
-            $page          = isset($parameters['page'])?$parameters['page']:1;
-            $itemPerPage   = isset($parameters['itemPerPage'])?$parameters['itemPerPage']:20;
-            $pagination    = $this->get('knp_paginator');
-            $babyRecords   = $pagination->paginate(
-                $query,
-                $page,
-                $itemPerPage
-            );
+            if ($babyRecords !== null) {
+                $session->remove('babyRecords');
+            } else {
+                $parameters['isCollapse'] = 'false';
+                $parameters = KddsJSONRepository::convertDateInParameter($parameters);
+                $arrayData = KddsJSONRepository::convert_filter_array($parameters);
+                $parametersData = $arrayData['parametersData'];
+                $query = $em->getRepository("AppBundle:KddsTblBaby")
+                    ->getQueryBabyByRequest($parametersData, $this->getUser());
 
-            $babyRecords->setUsedRoute('baby_result');
-            foreach ($parametersLink as $key => $value) {
-                $babyRecords->setParam($key, $value);
+                $pagination  = $this->get('knp_paginator');
+                $babyRecords = $pagination->paginate(
+                    $query,
+                    1,
+                    999999
+                );
             }
-            $totalItems = count($babyRecords);
-            if (0 < $totalItems) {
-                $this->get('session')->set('babyRecords', $babyRecords);
-                $responseJSON = KddsJSONRepository::kdds_json_encode($parametersData);
-                $em->getRepository("AppBundle:KddsTblSearchHistory")->addNewHistory(
-                    $this->getUser()->getUsername(),
-                    $responseJSON,
-                    1);
-
-            }
+            $image_url = $request->get('image_url');
             $response->setData(array(
-                'resultLink' => $this->generateUrl('baby_result', $parametersLink),
-                'total' => $totalItems,
+                'babyRecordList' => $babyRecords,
+                'image_url' => $image_url,
                 'error' => '',
             ));
-            //
+
             return $response;
         } catch(\Exception $e) {
             //エラー内容をログファイルに書き込む。
@@ -125,10 +128,12 @@ class BabyController extends Controller
             $logger->critical($e->getMessage());
             //
             $response->setData(array(
-                'resultLink' => '',
-                'total' => 0,
+                'babyRecordList' => '',
+                'image_url' => '',
                 'error' => $this->getParameter('exception_message'),
             ));
             return $response;
         }
+        // 20180504 FJN DAN-TD ADD END
     }
+}
